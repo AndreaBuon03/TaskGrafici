@@ -1,0 +1,77 @@
+<div class="controls">
+  <div class="zone-selector">
+      <input type="radio" id="zona1" name="zone" value="0b13c64b-08ff-4a61-985f-2b44b23c7c45" class="zone-radio" checked>
+      <label for="zona1" class="zone-label">Zona 1</label>
+      
+      <input type="radio" id="zona2" name="zone" value="7e7dd09c-a8ee-414d-b138-c058a3a3066e" class="zone-radio">
+      <label for="zona2" class="zone-label">Zona 2</label>
+
+      <input type="radio" id="zona3" name="zone" value="7e7dd09c-a8ee-414d-b138-c058a3a3066e" class="zone-radio">
+      <label for="zona3" class="zone-label">Zona 3</label>
+
+      <input type="radio" id="zona4" name="zone" value="7e7dd09c-a8ee-414d-b138-c058a3a3066e" class="zone-radio">
+      <label for="zona4" class="zone-label">Zona 4</label>
+      
+  </div>
+  <div class="period-controls">
+    <select id="periodSelect" class="period-select">
+        <option value="daily">Giornaliero</option>
+        <option value="monthly">Mensile</option>
+        <option value="annual">Annuale</option>
+    </select>
+
+    <!-- Controlli per il filtro giornaliero -->
+    <div id="dailyControls" class="period-filter-controls">
+        <input type="date" id="dailyDate" class="date-input">
+    </div>
+
+    <!-- Controlli per il filtro mensile -->
+    <div id="monthlyControls" class="period-filter-controls" style="display: none;">
+        <input type="month" id="monthYearPicker" class="month-input">
+    </div>
+
+    <!-- Controlli per il filtro annuale -->
+    <div id="annualControls" class="period-filter-controls" style="display: none;">
+        <input type="number" id="yearPicker" class="year-input" min="2020" max="2024" step="1">
+    </div>
+
+    <button onclick="applyFilters()" class="apply-button">
+        <i class="fas fa-filter"></i>
+        Applica Filtri
+    </button>
+</div>
+<div class="chart-container">
+  <div class="chart chart-slot-1">
+      <div class="chart-title">
+          <i class="fas fa-temperature-high"></i>
+          <span>Temperatura (°C)</span>
+      </div>
+      <div id="temperatureChart" style="height: 100%;"></div>
+      <a href="/src/app/Temperatura.html" target="_blank">
+        <i class="fas fa-external-link-alt"></i> Mostra dettagli della Temperatura</a>
+  </div>
+  <div class="chart chart-slot-2">
+      <div class="chart-title">
+          <i class="fas fa-droplet"></i>
+          <span>Umidità (%)</span>
+      </div>
+      <div id="humidityChart" style="height: 100%;"></div>
+  </div>
+</div>
+<div class="chart-container">
+  <div class="chart chart-slot-3">
+      <div class="chart-title">
+          <i class="fas fa-sun"></i>
+          <span>Radiazione Solare (W/m²)</span>
+      </div>
+      <div id="radiationChart" style="height: 100%;"></div>
+  </div>
+  <div class="chart chart-slot-4">
+      <div class="chart-title">
+          <i class="fas fa-cloud-rain"></i>
+          <span>Precipitazioni (mm)</span>
+      </div>
+      <div id="precipitationChart" style="height: 100%;"></div>
+  </div>
+</div>
+</div>
