@@ -1,0 +1,83 @@
+<div>
+    <input type="file" (change)="importCsv($event)" />
+  </div>
+  <!-- Aggiungi un menu a discesa per filtrare per zone -->
+  <!-- <div>
+    <label for="zoneFilter">Filtra per zona:</label>
+    <select id="zoneFilter" (change)="filterByZone($event)">
+      <option value="">Seleziona una zona</option>
+      <option *ngFor="let zone of zones" [value]="zone.id">{{ zone.name }}</option>
+    </select>
+  </div> -->
+  <div class="controls">
+    <div class="zone-selector">
+        <input type="radio" id="zona1" name="zone" value="0b13c64b-08ff-4a61-985f-2b44b23c7c45" class="zone-radio" (change)="filterByZone($event)" checked>
+        <label for="zona1" class="zone-label">Zona 1</label>
+        <input type="radio" id="zona2" name="zone" value="7e7dd09c-a8ee-414d-b138-c058a3a3066e" class="zone-radio" (change)="filterByZone($event)">
+        <label for="zona2" class="zone-label">Zona 2</label>
+    </div>
+    <div class="period-controls">
+      <select id="periodSelect" class="period-select">
+          <option value="daily">Giornaliero</option>
+          <option value="monthly">Mensile</option>
+          <option value="annual">Annuale</option>
+      </select>
+      <!-- Controlli per il filtro giornaliero -->
+      <div id="dailyControls" class="period-filter-controls">
+          <input type="date" id="dailyDate" class="date-input">
+      </div>
+      <!-- Controlli per il filtro mensile -->
+      <div id="monthlyControls" class="period-filter-controls" style="display: none;">
+          <input type="month" id="monthYearPicker" class="month-input">
+      </div>
+      <!-- Controlli per il filtro annuale -->
+      <div id="annualControls" class="period-filter-controls" style="display: none;">
+          <input type="number" id="yearPicker" class="year-input" min="2020" max="2024" step="1">
+      </div>
+  </div>
+  <div class="chart-container">
+    <div class="chart chart-slot-1">
+        <div class="chart-title">
+            <i class="fas fa-temperature-high"></i>
+            <span>Temperatura (°C)
+                <a href="/src/app/temperatura/temperatura.html" onclick="expandChart('temperatureChart')">
+                    <i class="fas fa-external-link-alt"></i> Mostra dettagli della Temperatura</a>
+            </span>
+        </div>
+        <canvas id="temperatureChart" style="height: 100%;"></canvas>
+    </div>
+    <div class="chart chart-slot-2">
+        <div class="chart-title">
+            <i class="fas fa-droplet"></i>
+            <span>Umidità (%)
+                <a href="/src/app/umidita/umidita.html" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Mostra dettagli dell'umidita</a>
+            </span>
+        </div>
+        <canvas id="humidityChart" style="height: 100%;"></canvas>
+    </div>
+  </div>
+  <div class="chart-container">
+    <div class="chart chart-slot-3">
+        <div class="chart-title">
+            <i class="fas fa-sun"></i>
+            <span>Radiazione Solare (W/m²)
+                <a href="/src/app/radiazione/radiazione.html" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Mostra dettagli della radiazione</a>
+            </span>
+        </div>
+        <canvas id="radiationChart" style="height: 100%;"></canvas>
+    </div>
+    <div class="chart chart-slot-4">
+        <div class="chart-title">
+            <i class="fas fa-cloud-rain"></i>
+            <span>Precipitazioni (mm)
+                <a href="/src/app/precipitazioni/precipitazioni.html" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Mostra dettagli della precipitazioni</a>
+            </span>
+        </div>
+        <canvas id="precipitationChart" style="height: 100%;"></canvas>
+    </div>
+  </div>
+  <!-- Se il grafico è pronto, visualizziamo il grafico -->
+  <canvas id="weatherChart"></canvas>
