@@ -1,0 +1,113 @@
+<div>
+  <input type="file" (change)="importCsv($event)" />
+</div>
+<!-- Aggiungi un menu a discesa per filtrare per zone -->
+<!-- <div>
+  <label for="zoneFilter">Filtra per zona:</label>
+  <select id="zoneFilter" (change)="filterByZone($event)">
+    <option value="">Seleziona una zona</option>
+    <option *ngFor="let zone of zones" [value]="zone.id">{{ zone.name }}</option>
+  </select>
+</div> -->
+<div class="controls">
+  <div class="zone-selector">
+    <input type="radio" id="zona1" name="zone" value="0b13c64b-08ff-4a61-985f-2b44b23c7c45" class="zone-radio"
+      (change)="filterByZone($event)" checked>
+    <label for="zona1" class="zone-label">Zona 1</label>
+    <input type="radio" id="zona2" name="zone" value="7e7dd09c-a8ee-414d-b138-c058a3a3066e" class="zone-radio"
+      (change)="filterByZone($event)">
+    <label for="zona2" class="zone-label">Zona 2</label>
+  </div>
+  <div id="dateRangeControls" class="period-filter-controls">
+    <label for="startDate">Data inizio:</label>
+    <input type="date" id="startDate" class="date-input" (change)="applyDateRangeFilter()">
+    <label for="endDate">Data fine:</label>
+    <input type="date" id="endDate" class="date-input" (change)="applyDateRangeFilter()">
+  </div>
+  <div class="period-controls">
+    <!-- Sostituisci il periodSelect con il monthSelect -->
+    <select id="monthSelect" class="month-select" (change)="applyMonthFilter()">
+      <option value="">Seleziona un mese</option>
+      <option value="01">Gennaio</option>
+      <option value="02">Febbraio</option>
+      <option value="03">Marzo</option>
+      <option value="04">Aprile</option>
+      <option value="05">Maggio</option>
+      <option value="06">Giugno</option>
+      <option value="07">Luglio</option>
+      <option value="08">Agosto</option>
+      <option value="09">Settembre</option>
+      <option value="10">Ottobre</option>
+      <option value="11">Novembre</option>
+      <option value="12">Dicembre</option>
+    </select>
+    <!-- Controlli per il filtro giornaliero -->
+    <div id="dailyControls" class="period-filter-controls">
+      <input type="date" id="dailyDate" class="date-input" (change)="applyDateFilter()">
+    </div>
+    <!-- Controlli per il filtro mensile -->
+    <div id="monthlyControls" class="period-filter-controls" style="display: none;">
+      <input type="month" id="monthYearPicker" class="month-input" (change)="applyMonthFilter()">
+    </div>
+    <!-- Controlli per il filtro annuale -->
+    <div id="annualControls" class="period-filter-controls" style="display: none;">
+      <input type="number" id="yearPicker" class="year-input" min="2020" max="2024" step="1">
+    </div>
+    <!-- <button (click)="applyFilters()" class="apply-button">
+        <i class="fas fa-filter"></i>
+        Applica Filtri
+    </button> -->
+  </div>
+
+  <div id="chartContainer" class="chart-container"></div>
+
+  <!-- Modale per ingrandire il grafico -->
+  <div id="chartModal" class="modal">
+    <div class="modal-content">
+      <canvas id="expandedChart"></canvas>
+    </div>
+  </div>
+
+  <div id="chartModal" class="modal">
+    <div class="modal-content">
+        <button class="close-button">&times;</button>
+        <canvas id="expandedChart"></canvas>
+    </div>
+</div>
+
+
+
+  <!-- <div class="chart-container">
+    <div class="chart chart-slot-1">
+      <div class="chart-title">
+        <i class="fas fa-temperature-high"></i>
+        <span>Temperatura (°C)</span>
+      </div>
+      <canvas id="temperatureChart" style="height: 100%;"></canvas>
+    </div>
+    <div class="chart chart-slot-2">
+      <div class="chart-title">
+        <i class="fas fa-droplet"></i>
+        <span>Umidità (%)</span>
+      </div>
+      <canvas id="humidityChart" style="height: 100%;"></canvas>
+    </div>
+  </div>
+  <div class="chart-container">
+    <div class="chart chart-slot-3">
+      <div class="chart-title">
+        <i class="fas fa-sun"></i>
+        <span>Radiazione Solare (W/m²)</span>
+      </div>
+      <canvas id="radiationChart" style="height: 100%;"></canvas>
+    </div>
+    <div class="chart chart-slot-4">
+      <div class="chart-title">
+        <i class="fas fa-cloud-rain"></i>
+        <span>Precipitazioni (mm)</span>
+      </div>
+      <canvas id="precipitationChart" style="height: 100%;"></canvas>
+    </div>
+  </div> -->
+  <!-- Se il grafico è pronto, visualizziamo il grafico -->
+  <canvas id="weatherChart"></canvas>
